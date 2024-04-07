@@ -14,6 +14,10 @@ The system monitoring script checks the system state to detect resource shortage
 ## Backup Script
 The backup script enables regular backups of important databases, files, or configurations, storing them in a secure location. It can be easily customized to perform various types of backups. I will implement an function to send youre backup to google drive or smth.
 
+
+## File Search Script
+This Bash script allows you to search for files in a specified directory that contain a particular string. `./searchforfile.sh <directory> <search_string>`
+
 ### Making it Default and Setting Up Automatic Execution
 To make the automatic update script a standard process and have it executed regularly at a specific time, you can set up a cron job. Open the cron table using the command `crontab -e` and add the following line:
 `0 2 * * * /path/to/script/auto_update.sh` This will execute the script daily at 2:00 AM. Make sure to replace "/path/to/script/auto_update.sh" with the actual path to your automatic update script.

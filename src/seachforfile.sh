@@ -22,3 +22,4 @@ fi
 
 echo "Searching for files containing '$search_string' in $directory ..."
 search_files "$directory" "$search_string"
+

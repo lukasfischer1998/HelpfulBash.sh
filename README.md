@@ -3,7 +3,7 @@
 This repository contains a collection of useful Bash scripts for Linux server system administration and some of them surely can be used for normal Linux systems.
 
 
-
+![Bash Logo](https://bashlogo.com/img/logo/svg/full_colored_dark.svg)
 
 ## Automatic Update Script
 The automatic update script performs automatic security updates for the operating system and installed software. It runs regularly to ensure the system is always up to date.

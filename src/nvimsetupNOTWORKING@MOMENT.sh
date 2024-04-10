@@ -65,9 +65,11 @@ uninstall_neovim() {
     apt remove -y neovim
     rm -rf "$user_home/.config/nvim"
 
-    echo "Neovim and its configuration have been uninstalled successfully."
-}
+    # Remove installed Python packages
+    pip3 uninstall -y pynvim flake8 black isort
 
+    echo "Neovim, its configuration, and related packages have been uninstalled successfully."
+}
 # Ask user whether to install or uninstall Neovim
 read -p "Do you want to install or uninstall Neovim? (install/uninstall): " choice
 

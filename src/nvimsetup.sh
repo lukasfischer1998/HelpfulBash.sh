@@ -6,8 +6,23 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
+# Function to install prerequisites
+install_prerequisites() {
+    #Python and pip
+    apt update
+    apt install -y python3 python3-pip
+
+    # Node.js a npm
+    curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+    apt install -y nodejs
+
+    # Python packages
+    pip3 install pynvim flake8 black isort
+}
+
+# install Neovim & config
 install_neovim() {
-    # Install Neovim
+   
     apt update
     apt install -y neovim
 
@@ -44,6 +59,7 @@ install_neovim() {
     echo "Finished installing Neovim!"
 }
 
+# Function to uninstall Neovim and configuration
 uninstall_neovim() {
     # Remove Neovim and its configuration
     apt remove -y neovim
@@ -57,6 +73,7 @@ read -p "Do you want to install or uninstall Neovim? (install/uninstall): " choi
 
 case "$choice" in
     install)
+        install_prerequisites
         install_neovim
         ;;
     uninstall)
@@ -69,4 +86,3 @@ case "$choice" in
 esac
 
 exit 0
-

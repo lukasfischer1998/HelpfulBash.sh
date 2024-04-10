@@ -18,6 +18,11 @@ The backup script enables regular backups of important databases, files, or conf
 ## File Search Script
 This Bash script allows you to search for files in a specified directory that contain a particular string. `./searchforfile.sh <directory> <search_string>`
 
+## Neovim Installation and Configuration Script
+
+This Bash script automates the installation of Neovim and sets up its configuration for the current logged in User. It clones the configuration from the GitHub repository [jdhao/nvim-config](https://github.com/jdhao/nvim-config) and sets appropriate permissions. Run the script with root privileges using `bash install_neovim.sh`.
+
+
 ### Making it Default and Setting Up Automatic Execution
 To make the automatic update script a standard process and have it executed regularly at a specific time, you can set up a cron job. Open the cron table using the command `crontab -e` and add the following line:
 `0 2 * * * /path/to/script/auto_update.sh` This will execute the script daily at 2:00 AM. For example.

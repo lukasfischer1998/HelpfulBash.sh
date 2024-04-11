@@ -18,9 +18,9 @@ The backup script enables regular backups of important databases, files, or conf
 ## File Search Script
 This Bash script allows you to search for files in a specified directory that contain a particular string. `./searchforfile.sh <directory> <search_string>`
 
-## Bim Installation and Configuration Script
+## Vim Installation and Configuration Script
 
-This Bash script automates the installation of Vim and sets up its configuration for the current logged in User. Run the script with root privileges using `bash install_vim.sh`.
+This Bash script automates the installation of Vim and sets up its configuration for the current logged in User. The Config are just some changes in the logged in users vimrc. Run the script with root privileges using `bash install_vim.sh`.
 
 
 ### Making it Default and Setting Up Automatic Execution

@@ -18,9 +18,9 @@ The backup script enables regular backups of important databases, files, or conf
 ## File Search Script
 This Bash script allows you to search for files in a specified directory that contain a particular string. `./searchforfile.sh <directory> <search_string>`
 
-## Neovim Installation and Configuration Script
+## Bim Installation and Configuration Script
 
-This Bash script automates the installation of Neovim and sets up its configuration for the current logged in User. It clones the configuration from the GitHub repository [jdhao/nvim-config](https://github.com/jdhao/nvim-config) and sets appropriate permissions. Run the script with root privileges using `bash install_neovim.sh`.
+This Bash script automates the installation of Vim and sets up its configuration for the current logged in User. Run the script with root privileges using `bash install_vim.sh`.
 
 
 ### Making it Default and Setting Up Automatic Execution

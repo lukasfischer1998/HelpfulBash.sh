@@ -25,7 +25,7 @@ This Bash script automates the installation of Vim and sets up its configuration
 ## loginlog Script
 This Bash script monitors login activities on a Linux server and saves them to a specified log file. To use, simply adjust the LOG_FILE variable to the desired location and run the script, which will continuously monitor login events and append them to the specified log file. For Debian-based systems like Ubuntu and Debian, the common path for authentication logs is /var/log/auth.log. For CentOS and Fedora, it's /var/log/secure. Older Ubuntu versions also use /var/log/auth.log, while macOS typically stores authentication logs in /var/log/system.log.
 
-### User Management Script
+## User Management Script
 This script facilitates user management tasks such as creating, deleting, locking .
 
 ### Making it Default and Setting Up Automatic Execution

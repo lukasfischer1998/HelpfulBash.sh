@@ -22,6 +22,9 @@ This Bash script allows you to search for files in a specified directory that co
 
 This Bash script automates the installation of Vim and sets up its configuration for the current logged in User. The Config are just some changes in the logged in users vimrc. Run the script with root privileges using `bash install_vim.sh`.
 
+## loginlog Script
+This Bash script monitors login activities on a Linux server and saves them to a specified log file. To use, simply adjust the LOG_FILE variable to the desired location and run the script, which will continuously monitor login events and append them to the specified log file.
+
 
 ### Making it Default and Setting Up Automatic Execution
 To make the automatic update script a standard process and have it executed regularly at a specific time, you can set up a cron job. Open the cron table using the command `crontab -e` and add the following line:

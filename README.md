@@ -5,13 +5,17 @@ This repository contains a collection of useful Bash scripts for Linux server sy
 ![Bash Logo](https://bashlogo.com/img/logo/svg/full_colored_dark.svg)
 
 ## Table of Contents
-- [Automatic Update Script](#automatic-update-script)
-- [System Monitoring Script](#system-monitoring-script)
-- [Backup Script](#backup-script)
-- [File Search Script](#file-search-script)
-- [Vim Installation and Configuration Script](#vim-installation-and-configuration-script)
-- [loginlog Script](#loginlog-script)
-- [User Management Script](#user-management-script)
+- [Helpful Server Scripts](#helpful-server-scripts)
+  - [Table of Contents](#table-of-contents)
+  - [Automatic Update Script](#automatic-update-script)
+  - [System Monitoring Script](#system-monitoring-script)
+  - [Backup Script](#backup-script)
+  - [File Search Script](#file-search-script)
+  - [Vim Installation and Configuration Script](#vim-installation-and-configuration-script)
+  - [loginlog Script](#loginlog-script)
+  - [User Management Script](#user-management-script)
+  - [HeisseFeed Script](#heissefeed-script)
+    - [Making it Default and Setting Up Automatic Execution](#making-it-default-and-setting-up-automatic-execution)
 
 ## Automatic Update Script
 The automatic update script performs automatic security updates for the operating system and installed software. It runs regularly to ensure the system is always up to date.
@@ -34,6 +38,12 @@ This Bash script monitors login activities on a Linux server and saves them to a
 ## User Management Script
 This script facilitates user management tasks such as creating, deleting, locking, and modifying user attributes.
 
+## HeisseFeed Script
+The `heissefeed.sh` script fetches and formats RSS feed content from the Heise website. It extracts titles and descriptions, formatting them alternately. If `xmlstarlet` is not installed, it will be installed automatically. 
+
+
+
+
 ### Making it Default and Setting Up Automatic Execution
-To make the automatic update script a standard process and have it executed regularly at a specific time, you can set up a cron job. Open the cron table using the command `crontab -e` and add the following line:
-`0 2 * * * /path/to/script/auto_update.sh` This will execute the script daily at 2:00 AM. For example.
+To make the automatic update script a standard process, open the cron table using the command `crontab -e` and add the following line:
+`0 2 * * * /path/to/script/SCRIPTNAME` This will execute the script daily at 2:00 AM. For example.

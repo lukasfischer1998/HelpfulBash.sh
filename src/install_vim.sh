@@ -1,42 +1,41 @@
 #!/bin/bash
-
-# Überprüfen, ob das Skript mit sudo-Rechten ausgeführt wird
-if [ "$(id -u)" != "0" ]; then
-    echo "Dieses Skript benötigt sudo-Rechte. Bitte führen Sie es mit sudo aus."
+# Check if script is run with sudo privileges
+if [[ $EUID -ne 0 ]]; then
+    echo "This script requires sudo privileges. Please run it with sudo."
     exit 1
 fi
 
-# Funktion zur Installation von Vim
+# Function to install Vim
 install_vim() {
-    echo "Vim wird installiert..."
+    echo "Installing Vim..."
     apt-get update
     apt-get install vim -y
-    echo "Vim wurde erfolgreich installiert."
+    echo "Vim has been successfully installed."
 }
 
-# Funktion zum Entfernen der Verzeichnisse für Vim im Home-Verzeichnis des aktuellen Benutzers
+# Function to remove Vim directories in user's home directory
 uninstall_vim_dirs() {
     local user_home=$(getent passwd $SUDO_USER | cut -d: -f6)
-    echo "Entferne .vim-Verzeichnis und Unterverzeichnisse im Home-Verzeichnis von $SUDO_USER..."
+    echo "Removing .vim directory and subdirectories in the home directory of $SUDO_USER..."
     rm -rf "$user_home/.vim"
-    echo "Verzeichnisse wurden erfolgreich entfernt."
+    echo "Directories have been successfully removed."
 }
 
-# Funktion zum Entfernen der .vimrc-Datei im Home-Verzeichnis des aktuellen Benutzers
+# Function to delete .vimrc file in user's home directory
 delete_vimrc() {
     local user_home=$(getent passwd $SUDO_USER | cut -d: -f6)
-    echo "Entferne .vimrc-Datei im Home-Verzeichnis von $SUDO_USER..."
+    echo "Deleting .vimrc file in the home directory of $SUDO_USER..."
     rm -f "$user_home/.vimrc"
-    echo ".vimrc-Datei wurde erfolgreich entfernt."
+    echo ".vimrc file has been successfully deleted."
 }
 
-# Funktion zum Aktualisieren der .vimrc-Datei mit einem modernen Vim-Setup
+# Function to update .vimrc file with a modern Vim setup
 update_vimrc_file() {
     local user_home=$(getent passwd $SUDO_USER | cut -d: -f6)
     local vimrc_path="$user_home/.vimrc"
-    echo "Aktualisiere .vimrc-Datei im Home-Verzeichnis von $SUDO_USER..."
+    echo "Updating .vimrc file in the home directory of $SUDO_USER..."
 
-    # Erstelle eine moderne .vimrc-Datei
+    # Create a modern .vimrc file
     cat <<EOT > "$vimrc_path"
 " Modernes Vim-Setup
 
@@ -124,40 +123,42 @@ set showmatch
 set cursorline
 EOT
 
-    echo "Die .vimrc-Datei wurde erfolgreich aktualisiert."
+    echo ".vimrc file has been successfully updated."
 }
 
-# Hauptfunktion zum Deinstallieren von Vim
+# Main function to uninstall Vim
 uninstall_vim() {
-    echo "Vim wird deinstalliert..."
+    echo "Uninstalling Vim..."
     apt-get remove vim -y
     apt-get remove --purge vim -y
     apt-get autoremove -y
     aptitude remove vim -y
     uninstall_vim_dirs
     delete_vimrc
-    echo "Vim wurde erfolgreich deinstalliert."
+    echo "Vim has been successfully uninstalled."
 }
 
-# Hauptfunktion zum Installieren und Konfigurieren von Vim
+# Main function to install and configure Vim
 main() {
-    # Benutzer fragen, ob installiert oder deinstalliert werden soll
-    echo "Möchten Sie Vim installieren oder deinstallieren? (i für installieren, d für deinstallieren)"
-    read choice
+    # Ask user whether to install or uninstall
+    echo "Do you want to install or uninstall Vim?"
+    echo "  i) Install"
+    echo "  u) Uninstall"
+    read -p "Your choice: " choice
 
     case $choice in
-        i)
+        i|I)
             install_vim
             update_vimrc_file
             ;;
-        d)
+        u|U)
             uninstall_vim
             ;;
         *)
-            echo "Ungültige Auswahl. Bitte wählen Sie 'i' für installieren oder 'd' für deinstallieren."
+            echo "Invalid choice. Please choose 'i' to install or 'u' to uninstall."
             ;;
     esac
 }
 
-# Aufrufen der Hauptfunktion
+# Call the main function
 main
